@@ -12,9 +12,9 @@ def solution(p: float, x: np.array) -> tuple:
     # Не меняйте название функции и её аргументы
     alpha = 1 - p
     n = len(x)
-    s2 = np.var(x)
-    left = (n - 1) * s2 / chi2.ppf(1 - alpha / 2, n - 1)
-    right = (n - 1) * s2 / chi2.ppf(alpha / 2, n - 1)
+    s2 = np.sum(np.square(x))
+    left = s2 / chi2.ppf(1 - alpha / 2, n - 1)
+    right = s2 / chi2.ppf(alpha / 2, n - 1)
     left = np.sqrt(left / 43)
     right = np.sqrt(right / 43)
     if right < left:
